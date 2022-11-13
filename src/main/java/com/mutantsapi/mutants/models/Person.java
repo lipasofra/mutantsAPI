@@ -11,16 +11,16 @@ public class Person {
     private String id;
 
     @NotBlank (message = "Must provide the person DNA code")
-    private String[] dna;
+    private DNA dna;
 
     private Boolean isMutant;
 
-    public Person(String[] dna, Boolean isMutant) {
+    public Person(DNA dna, Boolean isMutant) {
         this.dna = dna;
         this.isMutant = isMutant;
     }
 
-    public void setDna(String[] dna) {
+    public void setDna(DNA dna) {
         this.dna = dna;
     }
 
