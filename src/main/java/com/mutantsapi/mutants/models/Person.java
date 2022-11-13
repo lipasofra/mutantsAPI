@@ -1,13 +1,21 @@
 package com.mutantsapi.mutants.models;
 
+import com.sun.istack.NotNull;
+import org.springframework.data.annotation.Id;
+
+import javax.validation.constraints.NotBlank;
+
 public class Person {
 
+    @Id
     private String id;
+
+    @NotBlank (message = "Must provide the person DNA code")
     private String[] dna;
+
     private Boolean isMutant;
 
-    public Person(String[] dna, Boolean isMutant, String id) {
-        this.id = id;
+    public Person(String[] dna, Boolean isMutant) {
         this.dna = dna;
         this.isMutant = isMutant;
     }
