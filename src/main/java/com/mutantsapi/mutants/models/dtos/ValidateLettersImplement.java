@@ -2,6 +2,7 @@ package com.mutantsapi.mutants.models.dtos;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 public class ValidateLettersImplement implements ValidateLetters {
 
@@ -14,7 +15,7 @@ public class ValidateLettersImplement implements ValidateLetters {
 
             outterloop: for (int row = 0; row < dna.length; row++) {
                 for(int column = 0; column < dna.length; column++) {
-                    char letter = dna[row].charAt(column);
+                    char letter = dna[row].toUpperCase().charAt(column);
                     if (letters.contains(Character.toString(letter))) {
                         continue;
                     } else {

@@ -58,8 +58,8 @@ public class MutationValidationImp implements MutationValidation{
         char[][] matrix = new char[len][len];
         outterloop: for (int row = 0; row < dna.length; row++) {
             for(int column = 0; column < dna.length; column++){
-                char letter = dna[row].charAt(column);
-                matrix[row][column] = dna[row].charAt(column);
+                char letter = dna[row].toUpperCase().charAt(column);
+                matrix[row][column] = letter;
                 System.out.print(matrix[row][column]);
             }
             System.out.println();

@@ -9,8 +9,10 @@ import com.mutantsapi.mutants.models.dtos.ValidateLetters;
 import com.mutantsapi.mutants.repositories.PersonRepository;
 import com.mutantsapi.mutants.services.MutationValidation;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -30,7 +32,7 @@ public class PersonController {
 
 
     @PostMapping("/mutant/")
-    HttpStatus newPerson(@RequestBody DNA originalDna){
+    public ResponseEntity<String> newPerson(@RequestBody DNA originalDna){
 
         //Person person = null; cambiarlo, no puede ser null
 
@@ -51,9 +53,9 @@ public class PersonController {
 
 
         if(mutationValidation.isMutant(originalDna)){
-            return HttpStatus.OK;
+            return new ResponseEntity<>("es mutante", HttpStatus.OK);
         } else {
-            return HttpStatus.FORBIDDEN;
+            return new ResponseEntity<>("es humano", HttpStatus.FORBIDDEN);
         }
 
 
