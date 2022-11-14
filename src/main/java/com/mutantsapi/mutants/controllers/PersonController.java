@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 public class PersonController {
 
@@ -34,11 +36,23 @@ public class PersonController {
     @PostMapping("/mutant/")
     public ResponseEntity<String> newPerson(@RequestBody DNA originalDna){
 
-        //Person person = null; cambiarlo, no puede ser null
+        //Person person = new Person;
+
+        boolean InputInstance = originalDna.dna instanceof String[];
+
+        if(originalDna.dna == null){
+            throw new NotEqualDimensionsException("Is mandatory to provide a DNA array");
+        }
+        if(!InputInstance ){
+            throw new NotEqualDimensionsException("You have not provided a DNA array");
+        }
 
         String[] dna = originalDna.dna;
 
         /*validaciones para analizar si es mutante*/
+        if(dna.length<4){
+            throw new NotEqualDimensionsException("DNA must be larger than 3 codes");
+        }
         if(!validateDimension.validateDimension(dna)){
             throw new NotEqualDimensionsException("The dimensions of the DNA are not square");
         }
