@@ -1,7 +1,6 @@
 package com.mutantsapi.mutants.controllers;
 
-import com.mutantsapi.mutants.exceptions.NotAllowedLettersException;
-import com.mutantsapi.mutants.exceptions.NotEqualDimensionsException;
+import com.mutantsapi.mutants.exceptions.ValidationsException;
 import com.mutantsapi.mutants.models.DNA;
 import com.mutantsapi.mutants.models.Person;
 import com.mutantsapi.mutants.services.PersonService;
@@ -39,30 +38,14 @@ public class PersonController {
         Person person = new Person();
         String[] dna = originalDna.dna;
 
-        boolean InputInstance = originalDna.dna instanceof String[];
+        //boolean InputInstance = originalDna.dna instanceof String[]; CORREGIR!!
+        /*if(!InputInstance ){
+            throw new ValidationsException("You have not provided a DNA array");
+        }*/
 
-
-        if(!InputInstance ){
-            throw new NotEqualDimensionsException("You have not provided a DNA array");
-        }
 
         /*validaciones para poder analizar si es mutante*/
-        if(personService.verifyExistence(dna)){
-            throw new NotEqualDimensionsException("Already exists a person with that DNA, try with other one");
-        }
-        if(originalDna.dna == null){
-            throw new NotEqualDimensionsException("Is mandatory to provide a DNA array");
-        }
-        if(dna.length<4){
-            throw new NotEqualDimensionsException("DNA must be larger than 3 codes");
-        }
-        if(!validateDimension.validateDimension(dna)){
-            throw new NotEqualDimensionsException("The dimensions of the DNA are not square");
-        }
-        if(!validateLetters.validateLetters(dna)){
-            throw new NotAllowedLettersException("The DNA has not allowed nitrogenous bases. The only allowed are A, " +
-                    "T, G, C");
-        }
+        mutationValidation.validations(dna);
 
         /*Analisis de mutación y armado del perfil para guardar en la BD*/
         Boolean personMutant = mutationValidation.isMutant(originalDna);
@@ -72,9 +55,9 @@ public class PersonController {
         /*Guardar la persona en la BD y retornar Http Status solicitado*/
         personRepository.save(person);
         if(personMutant){
-            return new ResponseEntity<>("es mutante", HttpStatus.OK);
+            return new ResponseEntity<>("Is mutant", HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("es humano", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Is human", HttpStatus.FORBIDDEN);
         }
 
 

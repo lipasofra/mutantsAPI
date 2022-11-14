@@ -2,6 +2,13 @@ package com.mutantsapi.mutants.services.searches;
 
 public class SearchesImpl implements Searches{
 
+
+    /**
+     * Search into a square matrix negative diagonals for 4 equal characters
+     * @param matrix the filled matrix with the chars of DNA
+     * @param len the lenght of the DNA code
+     * @return quantity of coincidences of 4 equal codes in a negative diagonal
+     */
     @Override
     public int searchDiagonalNegative(char[][] matrix, int len) {
         int sequences = 0;

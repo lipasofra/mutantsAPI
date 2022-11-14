@@ -17,8 +17,8 @@ public class BeansConfiguration {
 
     @Bean
     public MutationValidation mutationValidation(ValidateDimension validateDimension, ValidateLetters validateLetters
-            , Searches searches){
-        return new MutationValidationImp(validateDimension, validateLetters, searches);
+            , Searches searches, PersonService personService){
+        return new MutationValidationImp(validateDimension, validateLetters, searches, personService);
     }
 
     @Bean
