@@ -1,6 +1,4 @@
-package com.mutantsapi.mutants.models.dtos;
-
-import javax.validation.constraints.NotBlank;
+package com.mutantsapi.mutants.services.validations;
 
 public class ValidateDimensionImplement implements ValidateDimension {
 

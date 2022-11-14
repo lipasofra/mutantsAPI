@@ -1,8 +1,7 @@
-package com.mutantsapi.mutants.models.dtos;
+package com.mutantsapi.mutants.services.validations;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 
 public class ValidateLettersImplement implements ValidateLetters {
 

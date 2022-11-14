@@ -1,4 +1,4 @@
-package com.mutantsapi.mutants.models.dtos;
+package com.mutantsapi.mutants.services.validations;
 
 public interface ValidateLetters {
 

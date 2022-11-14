@@ -1,13 +1,9 @@
 package com.mutantsapi.mutants.services;
 
 import com.mutantsapi.mutants.models.DNA;
-import com.mutantsapi.mutants.models.dtos.ValidateDimension;
-import com.mutantsapi.mutants.models.dtos.ValidateLetters;
-import com.mutantsapi.mutants.repositories.PersonRepository;
+import com.mutantsapi.mutants.services.validations.ValidateDimension;
+import com.mutantsapi.mutants.services.validations.ValidateLetters;
 import com.mutantsapi.mutants.services.searches.Searches;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class MutationValidationImp implements MutationValidation{
 
