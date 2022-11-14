@@ -1,6 +1,5 @@
 package com.mutantsapi.mutants.services;
 
-import com.mutantsapi.mutants.models.Person;
 import com.mutantsapi.mutants.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
