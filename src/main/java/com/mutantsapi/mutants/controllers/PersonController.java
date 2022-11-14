@@ -3,6 +3,7 @@ package com.mutantsapi.mutants.controllers;
 import com.mutantsapi.mutants.exceptions.ValidationsException;
 import com.mutantsapi.mutants.models.DNA;
 import com.mutantsapi.mutants.models.Person;
+import com.mutantsapi.mutants.models.Stats;
 import com.mutantsapi.mutants.services.PersonService;
 import com.mutantsapi.mutants.services.validations.ValidateDimension;
 import com.mutantsapi.mutants.services.validations.ValidateLetters;
@@ -10,6 +11,7 @@ import com.mutantsapi.mutants.repositories.PersonRepository;
 import com.mutantsapi.mutants.services.MutationValidation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,6 +33,16 @@ public class PersonController {
         this.personService = personService;
     }
 
+    @GetMapping("/stats")
+    public Stats statistics(){
+
+        Long mutants = personService.mutantsQuantity(true);
+        Long humans = personService.mutantsQuantity(false);
+        double ratio = personService.mutantsRatio(mutants, humans);
+
+        return new Stats(mutants, humans, ratio);
+    }
+
 
     @PostMapping("/mutant/")
     public Object newPerson(@RequestBody DNA originalDna){
@@ -42,7 +54,6 @@ public class PersonController {
         /*if(!InputInstance ){
             throw new ValidationsException("You have not provided a DNA array");
         }*/
-
 
         /*validaciones para poder analizar si es mutante*/
         mutationValidation.validations(dna);
@@ -59,9 +70,6 @@ public class PersonController {
         } else {
             return new ResponseEntity<>("Is human", HttpStatus.FORBIDDEN);
         }
-
-
-
     }
 
 }

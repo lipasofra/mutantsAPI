@@ -14,13 +14,9 @@ public class PersonService {
     }
     public Long mutantsQuantity(boolean isMutant){return personRepository.countByIsMutant(isMutant);}
 
-    public double mutantsRatio(){
+    public double mutantsRatio(Long mutants, Long humans){
 
-        Long mutants = mutantsQuantity(true);
-        Long humans = mutantsQuantity(false);
         double ratio = mutants/humans;
-
-
         return ratio;
     }
 }
