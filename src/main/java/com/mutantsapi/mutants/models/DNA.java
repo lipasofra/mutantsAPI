@@ -14,6 +14,14 @@ public class DNA {
 
     public DNA (){}
 
+    public String[] getDna() {
+        return dna;
+    }
+
+    public void setDna(String[] dna) {
+        this.dna = dna;
+    }
+
     public DNA(String[] dna) {
         this.dna = dna;
     }

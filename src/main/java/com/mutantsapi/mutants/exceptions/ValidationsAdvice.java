@@ -6,8 +6,9 @@ import org.springframework.web.bind.annotation.*;
 @ControllerAdvice
 @ResponseBody
 public class ValidationsAdvice {
+
     @ResponseBody
     @ExceptionHandler(ValidationsException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    String EntityNotLettersAdvice(ValidationsException ex){return ex.getMessage();}
+    String EntityAdvice(ValidationsException ex){return ex.getMessage();}
 }

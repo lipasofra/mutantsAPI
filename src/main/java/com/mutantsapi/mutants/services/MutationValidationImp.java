@@ -13,6 +13,14 @@ public class MutationValidationImp implements MutationValidation{
     private Searches searches;
     private PersonService personService;
 
+
+    public MutationValidationImp(ValidateDimension validateDimension,
+                                 ValidateLetters validateLetters, PersonService personService) {
+        this.validateDimension = validateDimension;
+        this.validateLetters = validateLetters;
+        this.personService = personService;
+    }
+
     public MutationValidationImp(ValidateDimension validateDimension,
                                  ValidateLetters validateLetters, Searches searches, PersonService personService) {
         this.validateDimension = validateDimension;

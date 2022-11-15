@@ -2,6 +2,7 @@ package com.mutantsapi.mutants.services;
 
 import com.mutantsapi.mutants.models.DNA;
 import com.mutantsapi.mutants.repositories.PersonRepository;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -25,33 +26,26 @@ public class PersonServiceTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
-
-
     }
 
     @Test
-    void verifyExistence() {
-
+    void verify_existence_dna_database() {
         String[] dna = {"ATACGA", "CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"};
 
-        when(personRepository.existsByDna(dna)).thenReturn(true);
-        assertTrue(personService.verifyExistence(dna));
+        assertNotNull(personService.verifyExistence(dna));
 
     }
 
     @Test
-    void mutantsQuantity() {
+    void return_count_mutants_in_database() {
 
         when(personRepository.countByIsMutant(true)).thenReturn(any(Long.class));
         assertNotNull(personService.mutantsQuantity(true));
 
-
     }
 
     @Test
-    void mutantsRatio() {
-
-        assertNotNull(String.valueOf(personService.mutantsRatio(8L, 4L)),2.0);
-
+    void calculate_ratio_persons() {
+        Assertions.assertEquals(2.0, personService.mutantsRatio(8L, 4L));
     }
 }
