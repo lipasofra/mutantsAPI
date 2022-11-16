@@ -1,8 +1,12 @@
 package com.mutantsapi.mutants.services.validations;
 
+import org.springframework.stereotype.Service;
+
 import java.util.Arrays;
 import java.util.List;
 
+
+@Service
 public class ValidateLettersImplement implements ValidateLetters {
 
     @Override

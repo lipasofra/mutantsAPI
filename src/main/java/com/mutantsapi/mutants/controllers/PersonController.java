@@ -9,6 +9,7 @@ import com.mutantsapi.mutants.services.validations.ValidateDimension;
 import com.mutantsapi.mutants.services.validations.ValidateLetters;
 import com.mutantsapi.mutants.repositories.PersonRepository;
 import com.mutantsapi.mutants.services.MutationValidation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,24 +17,26 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.PostConstruct;
+
 @RestController
 public class PersonController {
 
-    private PersonRepository personRepository;
+
+
+    @Autowired
     private MutationValidation mutationValidation;
-    private ValidateLetters validateLetters;
-    private ValidateDimension validateDimension;
+
     private PersonService personService;
 
-    public PersonController(PersonService personService) {
-        this.personService = personService;
-    }
 
-    public PersonController(PersonRepository personRepository, MutationValidation mutationValidation, ValidateLetters validateLetters, ValidateDimension validateDimension, PersonService personService){
-        this.personRepository = personRepository;
+    /*public PersonController(PersonService personService) {
+        this.personService = personService;
+    }*/
+
+    @Autowired
+    public PersonController(MutationValidation mutationValidation, PersonService personService){
         this.mutationValidation = mutationValidation;
-        this.validateLetters = validateLetters;
-        this.validateDimension = validateDimension;
         this.personService = personService;
     }
 
@@ -64,7 +67,7 @@ public class PersonController {
         person.setDna(originalDna.dna);
 
         /*Guardar la persona en la BD y retornar Http Status solicitado*/
-        personRepository.save(person);
+        personService.save(person);
         if(personMutant){
             return new ResponseEntity<>("Is mutant", HttpStatus.OK);
         } else {

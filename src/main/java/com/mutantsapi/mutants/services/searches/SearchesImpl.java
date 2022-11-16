@@ -1,5 +1,8 @@
 package com.mutantsapi.mutants.services.searches;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class SearchesImpl implements Searches{
 
 

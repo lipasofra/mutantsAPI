@@ -1,5 +1,8 @@
 package com.mutantsapi.mutants.services.validations;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class ValidateDimensionImplement implements ValidateDimension {
 
     @Override

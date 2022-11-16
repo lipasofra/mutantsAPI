@@ -3,13 +3,18 @@ package com.mutantsapi.mutants.services;
 import com.mutantsapi.mutants.models.Person;
 import com.mutantsapi.mutants.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 
-
+@Service
 public class PersonService {
 
     @Autowired
     private PersonRepository personRepository;
+
+    public PersonService(PersonRepository personRepository) {
+        this.personRepository = personRepository;
+    }
 
     public boolean verifyExistence(String[] dna){
         return personRepository.existsByDna(dna);
@@ -19,7 +24,7 @@ public class PersonService {
 
     public double mutantsRatio(Long mutants, Long humans){
 
-        double ratio = mutants/humans;
+        double ratio = (double)mutants/(double)humans;
         return ratio;
     }
 }

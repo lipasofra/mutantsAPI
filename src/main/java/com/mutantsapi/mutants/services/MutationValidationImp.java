@@ -5,7 +5,10 @@ import com.mutantsapi.mutants.models.DNA;
 import com.mutantsapi.mutants.services.validations.ValidateDimension;
 import com.mutantsapi.mutants.services.validations.ValidateLetters;
 import com.mutantsapi.mutants.services.searches.Searches;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MutationValidationImp implements MutationValidation{
 
     private ValidateDimension validateDimension;
@@ -21,6 +24,7 @@ public class MutationValidationImp implements MutationValidation{
         this.personService = personService;
     }
 
+    @Autowired
     public MutationValidationImp(ValidateDimension validateDimension,
                                  ValidateLetters validateLetters, Searches searches, PersonService personService) {
         this.validateDimension = validateDimension;

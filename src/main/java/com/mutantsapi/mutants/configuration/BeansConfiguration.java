@@ -1,5 +1,7 @@
 package com.mutantsapi.mutants.configuration;
 
+import com.mutantsapi.mutants.controllers.PersonController;
+import com.mutantsapi.mutants.repositories.PersonRepository;
 import com.mutantsapi.mutants.services.PersonService;
 import com.mutantsapi.mutants.services.validations.ValidateDimension;
 import com.mutantsapi.mutants.services.validations.ValidateDimensionImplement;
@@ -36,7 +38,16 @@ public class BeansConfiguration {
         return new SearchesImpl();
     }
 
-    @Bean
-    public PersonService personService(){return new PersonService();}
+    /*@Bean
+    public PersonController personController(PersonRepository personRepository, MutationValidation mutationValidation, ValidateLetters validateLetters, ValidateDimension validateDimension, PersonService personService){
+        return new PersonController(personRepository, mutationValidation, validateLetters,
+                validateDimension, personService);
+    }*/
+
+    /*@Bean
+    public PersonService personService(PersonRepository personRepository){
+        return new PersonService(personRepository);
+    }*/
+
 
 }

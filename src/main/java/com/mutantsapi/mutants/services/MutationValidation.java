@@ -1,6 +1,7 @@
 package com.mutantsapi.mutants.services;
 
 import com.mutantsapi.mutants.models.DNA;
+import org.springframework.stereotype.Service;
 
 public interface MutationValidation {
 
