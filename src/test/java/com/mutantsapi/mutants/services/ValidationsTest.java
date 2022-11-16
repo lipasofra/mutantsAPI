@@ -142,6 +142,15 @@ public class ValidationsTest {
         assertFalse(validateDimension.validateDimension(dna));
     }
 
+    @Test
+    void goodDimensionDnaUnit() {
+
+        String[] dna = {"ATACGA", "CAGTGC","TTATHT","AGAAGG","CCCCTA","TCACTG"};
+        ValidateDimensionImplement validateDimension = new ValidateDimensionImplement();
+
+        assertTrue(validateDimension.validateDimension(dna));
+    }
+
 
     @Test
     void null_input() throws Exception {

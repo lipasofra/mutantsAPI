@@ -19,11 +19,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PersonController {
 
-    private final PersonRepository personRepository;
-    private final MutationValidation mutationValidation;
-    private final ValidateLetters validateLetters;
-    private final ValidateDimension validateDimension;
-    private final PersonService personService;
+    private PersonRepository personRepository;
+    private MutationValidation mutationValidation;
+    private ValidateLetters validateLetters;
+    private ValidateDimension validateDimension;
+    private PersonService personService;
+
+    public PersonController(PersonService personService) {
+        this.personService = personService;
+    }
 
     public PersonController(PersonRepository personRepository, MutationValidation mutationValidation, ValidateLetters validateLetters, ValidateDimension validateDimension, PersonService personService){
         this.personRepository = personRepository;
@@ -50,10 +54,6 @@ public class PersonController {
         Person person = new Person();
         String[] dna = originalDna.dna;
 
-        //boolean InputInstance = originalDna.dna instanceof String[]; CORREGIR!!
-        /*if(!InputInstance ){
-            throw new ValidationsException("You have not provided a DNA array");
-        }*/
 
         /*validaciones para poder analizar si es mutante*/
         mutationValidation.validations(dna);

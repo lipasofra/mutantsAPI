@@ -1,7 +1,10 @@
 package com.mutantsapi.mutants.services;
 
+import com.mutantsapi.mutants.models.Person;
 import com.mutantsapi.mutants.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+
+
 
 public class PersonService {
 
@@ -12,6 +15,7 @@ public class PersonService {
         return personRepository.existsByDna(dna);
     }
     public Long mutantsQuantity(boolean isMutant){return personRepository.countByIsMutant(isMutant);}
+    public Person save(Person person){return personRepository.save(person);}
 
     public double mutantsRatio(Long mutants, Long humans){
 
