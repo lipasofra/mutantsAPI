@@ -1,8 +1,7 @@
 package com.mutantsapi.mutants.models;
 
-import com.sun.istack.NotNull;
-import org.springframework.data.annotation.Id;
 
+import org.springframework.data.annotation.Id;
 import javax.validation.constraints.NotBlank;
 
 public class Person {
