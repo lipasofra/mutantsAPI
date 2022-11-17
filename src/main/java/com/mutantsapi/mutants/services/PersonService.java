@@ -21,12 +21,15 @@ public class PersonService {
         return personRepository.existsByDna(dna);
     }
 
+    public long mutantsQuantity(boolean isMutant){
+        return personRepository.countByIsMutant(isMutant);
+    }
 
-    public Long mutantsQuantity(boolean isMutant){return personRepository.countByIsMutant(isMutant);}
-    public Person save(Person person){return personRepository.save(person);}
+    public Person save(Person person){
+        return personRepository.save(person);
+    }
 
-    public double mutantsRatio(Long mutants, Long humans){
-
+    public double mutantsRatio(long mutants, long humans){
         double ratio = (double)mutants/(double)humans;
         return ratio;
     }

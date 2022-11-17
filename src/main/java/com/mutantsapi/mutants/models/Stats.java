@@ -2,17 +2,17 @@ package com.mutantsapi.mutants.models;
 
 public class Stats {
 
-    Long count_mutant_dna;
-    Long count_human_dna;
+    long count_mutant_dna;
+    long count_human_dna;
     double ratio;
 
-    public Stats(Long count_mutant_dna, Long count_human_dna, double ratio) {
+    public Stats(long count_mutant_dna, long count_human_dna, double ratio) {
         this.count_mutant_dna = count_mutant_dna;
         this.count_human_dna = count_human_dna;
         this.ratio = ratio;
     }
 
-    public Long getCount_mutant_dna() {
+    public long getCount_mutant_dna() {
         return count_mutant_dna;
     }
 
@@ -24,7 +24,7 @@ public class Stats {
         this.count_mutant_dna = count_mutant_dna;
     }
 
-    public Long getCount_human_dna() {
+    public long getCount_human_dna() {
         return count_human_dna;
     }
 

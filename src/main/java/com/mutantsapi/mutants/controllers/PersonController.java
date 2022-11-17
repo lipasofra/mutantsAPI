@@ -43,8 +43,8 @@ public class PersonController {
     @GetMapping("/stats")
     public Stats statistics(){
 
-        Long mutants = personService.mutantsQuantity(true);
-        Long humans = personService.mutantsQuantity(false);
+        long mutants = personService.mutantsQuantity(true);
+        long humans = personService.mutantsQuantity(false);
         double ratio = personService.mutantsRatio(mutants, humans);
 
         return new Stats(mutants, humans, ratio);

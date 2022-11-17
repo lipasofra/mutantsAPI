@@ -50,7 +50,7 @@ class PersonControllerTest {
     void statistics() throws Exception {
 
         PersonService personService = Mockito.mock(PersonService.class);
-        MutationValidation mutationValidation = Mockito.mock(MutationValidation.class);
+       MutationValidation mutationValidation = Mockito.mock(MutationValidation.class);
 
         when(personService.mutantsQuantity(true)).thenReturn(4L);
         when(personService.mutantsQuantity(false)).thenReturn(2L);
@@ -64,7 +64,7 @@ class PersonControllerTest {
     }
 
     @Test
-    void controller_post() throws Exception {
+    void controllerPostExpectedStatus() throws Exception {
 
         RequestBuilder request = MockMvcRequestBuilders
                 .post("/mutant/")
@@ -77,13 +77,4 @@ class PersonControllerTest {
     }
 
 
-
-    @Test
-    void other_type_input_dna() {
-
-        DNA dna = new DNA();
-
-        //Throwable exception = assertThrows(InputTypeExceptionHandler.class,
-        //  ()->{dna.setDna("WRONG");} );
-    }
 }
