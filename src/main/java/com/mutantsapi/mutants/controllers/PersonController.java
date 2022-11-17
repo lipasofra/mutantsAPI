@@ -28,6 +28,8 @@ public class PersonController {
 
     private PersonService personService;
 
+    private Stats stats;
+    private boolean consultStats = true;
 
     @Autowired
     public PersonController(MutationValidation mutationValidation, PersonService personService){
@@ -38,11 +40,15 @@ public class PersonController {
     @GetMapping("/stats")
     public Stats statistics(){
 
-        long mutants = personService.mutantsQuantity(true);
-        long humans = personService.mutantsQuantity(false);
-        double ratio = personService.mutantsRatio(mutants, humans);
+        if (consultStats){
+            long mutants = personService.mutantsQuantity(true);
+            long humans = personService.mutantsQuantity(false);
+            double ratio = personService.mutantsRatio(mutants, humans);
+            stats = new Stats(mutants, humans, ratio);
+            consultStats = false;
+        }
+        return stats;
 
-        return new Stats(mutants, humans, ratio);
     }
 
 
@@ -63,6 +69,7 @@ public class PersonController {
 
         /*Guardar la persona en la BD y retornar Http Status solicitado*/
         personService.save(person);
+        consultStats = true;
         if(personMutant){
             return new ResponseEntity<>("Is mutant", HttpStatus.OK);
         } else {
