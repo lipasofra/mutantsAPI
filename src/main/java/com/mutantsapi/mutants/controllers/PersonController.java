@@ -23,16 +23,11 @@ import javax.annotation.PostConstruct;
 public class PersonController {
 
 
-
     @Autowired
     private MutationValidation mutationValidation;
 
     private PersonService personService;
 
-
-    /*public PersonController(PersonService personService) {
-        this.personService = personService;
-    }*/
 
     @Autowired
     public PersonController(MutationValidation mutationValidation, PersonService personService){

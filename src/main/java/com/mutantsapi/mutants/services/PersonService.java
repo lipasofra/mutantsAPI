@@ -17,9 +17,11 @@ public class PersonService {
         this.personRepository = personRepository;
     }
 
+    @Cacheable("dnaExistence")
     public boolean verifyExistence(String[] dna){
         return personRepository.existsByDna(dna);
     }
+
 
     public long mutantsQuantity(boolean isMutant){
         return personRepository.countByIsMutant(isMutant);
@@ -28,6 +30,7 @@ public class PersonService {
     public Person save(Person person){
         return personRepository.save(person);
     }
+
 
     public double mutantsRatio(long mutants, long humans){
         double ratio = (double)mutants/(double)humans;
