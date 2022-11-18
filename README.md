@@ -1,7 +1,7 @@
 # Mutants API
 With this API you can save a person's DNA (String[]) in a database and determine if the person is human or mutant according to the sequences of its coding.
 
-![image](/mutants-humans example.PNG)
+![image](./mutants-humans-example.PNG)
 
 If the person has at least no-repeting-directional sequences of 4 equal letters is mutant, if has less than two, more than one in the same direction or none, the person is human.
 
