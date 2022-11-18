@@ -1,0 +1,452 @@
+{
+	"info": {
+		"_postman_id": "112703b7-7937-460e-aeb9-2c4d064fff74",
+		"name": "Mutants API",
+		"description": "Collection of requests for different use cases for the mutants api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17691787"
+	},
+	"item": [
+		{
+			"name": "other letter",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"dna\":[\"ATGGGG\",\"CAATGC\",\"GTATUT\",\"TGAAGG\",\"TCACTA\",\"TCACTG\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "34.204.2.189:8081/mutant/",
+					"host": [
+						"34",
+						"204",
+						"2",
+						"189"
+					],
+					"port": "8081",
+					"path": [
+						"mutant",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "other letter",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dna\":[\"ATGGGG\",\"CAATGC\",\"TTATUT\",\"TGAAGG\",\"TCACTA\",\"TCACTG\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "34.204.2.189:8081/mutant/",
+							"host": [
+								"34",
+								"204",
+								"2",
+								"189"
+							],
+							"port": "8081",
+							"path": [
+								"mutant",
+								""
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "74"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 18 Nov 2022 00:51:49 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "The DNA has not allowed nitrogenous bases. The only allowed are A, T, G, C"
+				}
+			]
+		},
+		{
+			"name": "is human",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token 63977435d1ad79efec0faafd33ee2b9d75c9bc37",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"dna\":[\"ATGAGG\",\"CAATGC\",\"TCATGT\",\"TGAAGG\",\"TCACTA\",\"TCACTG\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "34.204.2.189:8081/mutant/",
+					"host": [
+						"34",
+						"204",
+						"2",
+						"189"
+					],
+					"port": "8081",
+					"path": [
+						"mutant",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "is human",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 63977435d1ad79efec0faafd33ee2b9d75c9bc37",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dna\":[\"ATGCGG\",\"CAATGC\",\"TCATGT\",\"TGAAGG\",\"TCACTA\",\"TCACTG\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "34.204.2.189:8081/mutant/",
+							"host": [
+								"34",
+								"204",
+								"2",
+								"189"
+							],
+							"port": "8081",
+							"path": [
+								"mutant",
+								""
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "8"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 18 Nov 2022 00:54:18 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "Is human"
+				}
+			]
+		},
+		{
+			"name": "is mutant",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token 63977435d1ad79efec0faafd33ee2b9d75c9bc37",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"dna\":[\"ATGCCA\",\"CAGTCC\",\"GTATCT\",\"AGAACG\",\"GGGGTA\",\"TCACTG\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "34.204.2.189:8081/mutant/",
+					"host": [
+						"34",
+						"204",
+						"2",
+						"189"
+					],
+					"port": "8081",
+					"path": [
+						"mutant",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "is mutant",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 63977435d1ad79efec0faafd33ee2b9d75c9bc37",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dna\":[\"ATGCCA\",\"CAGTCC\",\"TTATCT\",\"AGAACG\",\"GGGGTA\",\"TCACTG\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "34.204.2.189:8081/mutant/",
+							"host": [
+								"34",
+								"204",
+								"2",
+								"189"
+							],
+							"port": "8081",
+							"path": [
+								"mutant",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "9"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 18 Nov 2022 00:54:42 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "Is mutant"
+				}
+			]
+		},
+		{
+			"name": "wrong dimensions",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"dna\":[\"ATGGGG\",\"CAATGC\",\"TTATT\",\"TGAAGG\",\"TCACTA\",\"TCACTG\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "34.204.2.189:8081/mutant/",
+					"host": [
+						"34",
+						"204",
+						"2",
+						"189"
+					],
+					"port": "8081",
+					"path": [
+						"mutant",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "wrong dimensions",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dna\":[\"ATGGGG\",\"CAATGC\",\"TTATT\",\"TGAAGG\",\"TCACTA\",\"TCACTG\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "34.204.2.189:8081/mutant/",
+							"host": [
+								"34",
+								"204",
+								"2",
+								"189"
+							],
+							"port": "8081",
+							"path": [
+								"mutant",
+								""
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "40"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 18 Nov 2022 00:54:59 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "The dimensions of the DNA are not square"
+				}
+			]
+		},
+		{
+			"name": "stats",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "34.204.2.189:8081/stats",
+					"host": [
+						"34",
+						"204",
+						"2",
+						"189"
+					],
+					"port": "8081",
+					"path": [
+						"stats"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "stats",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "34.204.2.189:8081/stats",
+							"host": [
+								"34",
+								"204",
+								"2",
+								"189"
+							],
+							"port": "8081",
+							"path": [
+								"stats"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 18 Nov 2022 00:55:26 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"count_mutant_dna\": 8,\n    \"count_human_dna\": 12,\n    \"ratio\": 0.6666666666666666\n}"
+				}
+			]
+		}
+	]
+}
